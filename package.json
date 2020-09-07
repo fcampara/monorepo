@@ -14,7 +14,8 @@
     "test": "jest",
     "dev": "lerna run dev --stream",
     "refresh": "lerna clean -y && lerna bootstrap",
-    "build-server": "docker build -t quiz-server -f ./packages/server/Dockerfile ."
+    "build-server": "docker build -t quiz-server -f ./packages/server/Dockerfile .",
+    "start:web": "lerna run --scope @quiz/web start"
   },
   "lint-staged": {
     "src/**/*.js": [
