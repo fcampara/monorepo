@@ -12,7 +12,9 @@
   },
   "scripts": {
     "test": "jest",
-    "dev": "lerna run dev --stream"
+    "dev": "lerna run dev --stream",
+    "refresh": "lerna clean -y && lerna bootstrap",
+    "build-server": "docker build -t quiz-server -f ./packages/server/Dockerfile ."
   },
   "lint-staged": {
     "src/**/*.js": [
