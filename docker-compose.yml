@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./packages/web/Dockerfile
+    container_name: quiz_web
+    working_dir: /app
+    ports:
+      - 3000:3000
+    volumes:
+      - $PWD:/app
+    command: ["npm", "run", "dev:web"]
+
+  api:
+    build:
+      context: .
+      target: development
+      dockerfile: ./packages/server/Dockerfile
+    container_name: quiz_server
+    working_dir: /app
+    ports:
+      - 3333:3333
+    volumes:
+      - $PWD:/app
+    command: ['npm', 'run', 'dev:server']

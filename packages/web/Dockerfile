@@ -18,4 +18,3 @@ RUN npx lerna bootstrap
 COPY . /usr/src/app
 RUN cd packages/web && npm run build
 
-CMD ["npm", "run", "start:web"]

@@ -1,21 +1,36 @@
 ARG NODE_VERSION=12.18.3
 
+# DEVELOPMENT
 FROM node:${NODE_VERSION}-alpine As development
 
-WORKDIR /usr/src/app
+WORKDIR /app
 ENV NODE_ENV=production
 
-COPY package.json /usr/src/app
-COPY lerna.json /usr/src/app
+COPY package.json /app
+COPY lerna.json /app
 
-COPY packages/server/package.json /usr/src/app/packages/server/
-
-COPY packages/config/typescript/package.json /home/app/packages/config/
+COPY packages/server/package.json /app/packages/server/
+COPY packages/config/typescript/package.json /app/packages/config/typescript/
 
 RUN npm i
 RUN npx lerna bootstrap
 
-COPY . /usr/src/app
+COPY . /app
 RUN cd packages/server && npm run build
 
-CMD ["node", "packages/server/dist/main"]
+# PRODUCTION
+FROM node:${NODE_VERSION}-alpine As production
+
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
+WORKDIR /app
+
+COPY packages/server/package.json /app
+
+RUN npm i --only=production
+
+COPY packages/server /app
+COPY --from=development /app/packages/server/dist ./app/dist
+
+CMD ["node", "app/dist/main"]
