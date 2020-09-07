@@ -14,12 +14,30 @@
     "test": "jest",
     "dev": "lerna run dev --stream"
   },
+  "lint-staged": {
+    "src/**/*.js": [
+      "lerna run lint --stream"
+    ],
+    "src/**/*.ts": [
+      "lerna run lint --stream"
+    ],
+    "src/**/*.tsx": [
+      "lerna run lint --stream"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn test"
+    }
+  },
   "devDependencies": {
     "@quiz/eslint": "*",
     "@types/jest": "^26.0.13",
     "husky": "^4.3.0",
     "jest": "^26.4.2",
     "lerna": "^3.22.1",
+    "lint-staged": "^10.3.0",
     "ts-jest": "^26.3.0",
     "typescript": "^4.0.2"
   }
