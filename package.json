@@ -27,11 +27,14 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged",
       "pre-push": "yarn test"
     }
   },
   "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
     "@quiz/eslint": "*",
     "@types/jest": "^26.0.13",
     "husky": "^4.3.0",
