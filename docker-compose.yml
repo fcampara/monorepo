@@ -12,6 +12,11 @@ services:
     volumes:
       - $PWD:/app
     command: ["npm", "run", "dev:web"]
+    networks:
+      - webnet
+    depends_on:
+      - api
+      - postgres
 
   api:
     build:
@@ -20,8 +25,33 @@ services:
       dockerfile: ./packages/server/Dockerfile
     container_name: quiz_server
     working_dir: /app
+    networks:
+      - webnet
     ports:
       - 3333:3333
     volumes:
       - $PWD:/app
     command: ['npm', 'run', 'dev:server']
+    depends_on:
+      - postgres
+
+  postgres:
+    env_file: .env.development
+    container_name: quiz_postgres
+    image: postgres:12
+    networks:
+      - webnet
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_DB: ${DB_DATABASE_NAME}
+      PG_DATA: /var/lib/postgresql/data
+    ports:
+      - 5431:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+networks:
+  webnet:
+volumes:
+  pgdata:
