@@ -1,24 +1,20 @@
-name: Build & Deploy (Production)
+name: Web Build & Deploy (Production)
 
 on:
   push:
     branches:
       - master
     paths:
-      - 'packages/web/**'
+      - 'packages/server/**'
 
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
-
+    container:
+      image: node:12.18.3
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12.x
-
-      - name: Deploy
-        run: echo "Deployed"
+      run: |
+          npm install
+          npm run test
