@@ -18,6 +18,7 @@ jobs:
         env:
           NODE_ENV: 'test'
         run: |
+          npm i
+          npx lerna bootstrap
           cd packages/web
-          npm install
           npm run test
