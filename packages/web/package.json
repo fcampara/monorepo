@@ -1,5 +1,5 @@
 {
-  "name": "@quiz/web",
+  "name": "@monorepo/web",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -15,7 +15,7 @@
     "react-dom": "16.13.1"
   },
   "devDependencies": {
-    "@quiz/typescript": "^1.0.0",
+    "@monorepo/typescript": "^1.0.0",
     "@types/node": "^14.6.4",
     "@types/react": "^16.9.49"
   }

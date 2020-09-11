@@ -1,3 +1,3 @@
-const config = require('@quiz/eslint')
+const config = require('@monorepo/eslint')
 
 module.exports = config

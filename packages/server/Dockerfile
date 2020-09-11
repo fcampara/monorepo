@@ -4,15 +4,18 @@ ARG NODE_VERSION=12.18.3
 FROM node:${NODE_VERSION}-alpine As development
 
 WORKDIR /app
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 
 COPY package.json /app
 COPY lerna.json /app
+COPY yarn.lock /app
 
 COPY packages/server/package.json /app/packages/server/
 COPY packages/config/typescript/package.json /app/packages/config/typescript/
+COPY packages/config/eslint/package.json /app/packages/config/eslint/
 
-RUN npm i
+RUN yarn config set workspaces-experimental true
+RUN yarn
 RUN npx lerna bootstrap
 
 COPY . /app

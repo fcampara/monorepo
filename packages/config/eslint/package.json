@@ -1,5 +1,5 @@
 {
-  "name": "@quiz/eslint",
+  "name": "@monorepo/eslint",
   "version": "0.0.1",
   "main": ".eslintrc.json",
   "license": "MIT",
@@ -20,8 +20,5 @@
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-standard": "^4.0.1",
     "prettier": "^2.0.5"
-  },
-  "dependencies": {
-    "@quiz/typescript": "^1.0.0"
   }
 }

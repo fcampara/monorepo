@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./packages/web/Dockerfile
-    container_name: quiz_web
+    container_name: monorepo_web
     working_dir: /app
     ports:
       - 3000:3000
@@ -23,7 +23,7 @@ services:
       context: .
       target: development
       dockerfile: ./packages/server/Dockerfile
-    container_name: quiz_server
+    container_name: monorepo_server
     working_dir: /app
     networks:
       - webnet
@@ -37,7 +37,7 @@ services:
 
   postgres:
     env_file: .env
-    container_name: quiz_postgres
+    container_name: monorepo_postgres
     image: postgres:12
     networks:
       - webnet

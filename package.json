@@ -1,5 +1,5 @@
 {
-  "name": "quiz",
+  "name": "monorepo",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -14,10 +14,10 @@
     "test": "jest",
     "dev": "lerna run dev --stream",
     "refresh": "lerna clean -y && lerna bootstrap",
-    "build-server": "docker build -t quiz-server -f ./packages/server/Dockerfile .",
-    "start:web": "lerna run --scope @quiz/web start",
-    "dev:server": "lerna run --scope @quiz/server dev",
-    "dev:web": "lerna run --scope @quiz/web dev"
+    "build-server": "docker build -t monorepo-server -f ./packages/server/Dockerfile .",
+    "start:web": "lerna run --scope @monorepo/web start",
+    "dev:server": "lerna run --scope @monorepo/server dev",
+    "dev:web": "lerna run --scope @monorepo/web dev"
   },
   "lint-staged": {
     "src/**/*.js": [
@@ -40,7 +40,7 @@
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
-    "@quiz/eslint": "*",
+    "@monorepo/eslint": "*",
     "@types/jest": "^26.0.13",
     "husky": "^4.3.0",
     "jest": "^26.4.2",

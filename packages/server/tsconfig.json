@@ -1,5 +1,5 @@
 {
-  "extends": "@quiz/typescript",
+  "extends": "@monorepo/typescript",
   "compilerOptions": {
     "outDir": "./dist",
     "baseUrl": "./",

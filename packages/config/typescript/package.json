@@ -1,6 +1,9 @@
 {
-  "name": "@quiz/typescript",
+  "name": "@monorepo/typescript",
   "version": "1.0.0",
   "main": "tsconfig.json",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@monorepo/eslint": "^0.0.1"
+  }
 }
