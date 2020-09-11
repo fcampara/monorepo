@@ -36,7 +36,7 @@ services:
       - postgres
 
   postgres:
-    env_file: .env.development
+    env_file: .env
     container_name: quiz_postgres
     image: postgres:12
     networks:
